@@ -32,7 +32,7 @@ const SignupForm = () => {
   };
   return (
     <Form {...form}>
-      <div className="sm:w-420 flex-center flex-col">
+      <div className="sm:w-400 flex-center flex-col">
         <div className="flex flex-row gap-4">
           <img
             src="/assets/images/logo-form.png"
@@ -51,7 +51,7 @@ const SignupForm = () => {
 
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-5 w-full mt-4"
+          className="flex flex-col gap-4 w-full mt-4"
         >
           <FormField
             control={form.control}
