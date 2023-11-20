@@ -87,7 +87,7 @@ const SigninForm = () => {
           <p className="text-small-regular text-light-2 text-center mt-2">
             Do not have an account yet?
             <Link
-              to="/sign-in"
+              to="/sign-up"
               className="text-primary-500 ml-2 text-small-semibold"
             >
               Sign up
