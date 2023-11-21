@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SignupValidationSchema } from '@/lib/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -19,9 +19,12 @@ import {
   useCreateUserAcccount,
   useSigninAcccount,
 } from '@/lib/react-query/queriesAndMutations';
+import { useUserContext } from '@/context/AuthContext';
 
 const SignupForm = () => {
   const { toast } = useToast();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const navigate = useNavigate();
 
   const { mutateAsync: createUserAccount, isLoading: isCreatingUser } =
     useCreateUserAcccount();
@@ -50,6 +53,13 @@ const SignupForm = () => {
     });
     if (!session) {
       return toast({ title: 'Sign in failed. PLease try again' });
+    }
+    const isLoggedIn = await checkAuthUser();
+    if (isLoggedIn) {
+      form.reset();
+      navigate('/');
+    } else {
+      return toast({ title: 'Sign up failed. PLease try again' });
     }
   };
 
