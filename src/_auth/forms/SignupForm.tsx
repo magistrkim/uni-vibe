@@ -16,8 +16,8 @@ import { Input } from '@/components/ui/input';
 import Loader from '@/components/shared/Loader';
 import { useToast } from '@/components/ui/use-toast';
 import {
-  useCreateUserAcccount,
-  useSigninAcccount,
+  useCreateUserAccount,
+  useSigninAccount,
 } from '@/lib/react-query/queriesAndMutations';
 import { useUserContext } from '@/context/AuthContext';
 
@@ -26,11 +26,11 @@ const SignupForm = () => {
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
   const navigate = useNavigate();
 
-  const { mutateAsync: createUserAccount, isLoading: isCreatingUser } =
-    useCreateUserAcccount();
+  const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
+    useCreateUserAccount();
 
-  const { mutateAsync: signinAccount, isLoading: isSigningIn } =
-    useSigninAcccount();
+  const { mutateAsync: signinAccount, isPending: isSigningIn } =
+    useSigninAccount();
 
   const form = useForm<z.infer<typeof SignupValidationSchema>>({
     resolver: zodResolver(SignupValidationSchema),
@@ -139,7 +139,7 @@ const SignupForm = () => {
             )}
           />
           <Button type="submit" className="shad-button_primary">
-            {isCreatingUser ? (
+            {isCreatingAccount ? (
               <div className="flex-center gap-2">
                 <Loader /> Loading...
               </div>
