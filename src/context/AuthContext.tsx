@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useState, createContext, useContext, useEffect } from 'react';
 import { IUser } from '@/types';
 import { getCurrentUser } from '@/lib/appwrite/api';
@@ -63,9 +63,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
   useEffect(() => {
     if (
-      localStorage.getItem('cookieFallback') === '[]'
-      // ||
-      // localStorage.getItem('cookieFallback') === null
+      localStorage.getItem('cookieFallback') === '[]' ||
+      localStorage.getItem('cookieFallback') === null
     )
       navigate('/sign-in');
     checkAuthUser();
