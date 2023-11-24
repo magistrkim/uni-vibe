@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { useSignOutAccount } from '@/lib/react-query/queriesAndMutations';
 import { useEffect } from 'react';
@@ -9,6 +9,7 @@ import { INavLink } from '@/types';
 const LeftSidebar = () => {
   const { mutate: signOut, isSuccess } = useSignOutAccount();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { user } = useUserContext();
   useEffect(() => {
     if (isSuccess) navigate(0);
@@ -40,31 +41,32 @@ const LeftSidebar = () => {
         </Link>
         <ul className="flex flex-col gap-6">
           {sidebarLinks.map((link: INavLink) => {
+            const isActive = pathname === link.route;
             return (
-              <li key={link.label} className="leftsidebar-link">
+              <li
+                key={link.label}
+                className={`leftsidebar-link ${isActive && 'bg-primary-500'}`}
+              >
                 <NavLink
                   to={link.route}
                   className="flex gap-4 p-4 items-center"
                 >
-                  <img
-                    src={link.imgURL}
-                    alt={link.label}
-                    className='group-hover:invert-white'
-                  />
+                  <img src={link.imgURL} alt={link.label} />
                   {link.label}
                 </NavLink>
               </li>
             );
           })}
         </ul>
-        <Button
-          variant="ghost"
-          className="shad-button_ghost"
-          onClick={() => signOut()}
-        >
-          <img src="/assets/icons/logout.svg" alt="logout" />
-        </Button>
       </div>
+      <Button
+        variant="ghost"
+        className="shad-button_ghost"
+        onClick={() => signOut()}
+      >
+        <img src="/assets/icons/logout.svg" alt="logout" />
+        <p className="small-medium lg:base-medium">Logout</p>
+      </Button>
     </nav>
   );
 };
