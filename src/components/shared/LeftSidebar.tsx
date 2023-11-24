@@ -46,6 +46,11 @@ const LeftSidebar = () => {
                   to={link.route}
                   className="flex gap-4 p-4 items-center"
                 >
+                  <img
+                    src={link.imgURL}
+                    alt={link.label}
+                    className='group-hover:invert-white'
+                  />
                   {link.label}
                 </NavLink>
               </li>
