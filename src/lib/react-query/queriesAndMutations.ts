@@ -9,6 +9,7 @@ import {
   signinAccount,
   signOutAccount,
   createPost,
+  getRecentPosts,
 } from '../appwrite/api';
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types';
 import { QUERY_KEYS } from '@/lib/react-query/queryKeys';
@@ -18,7 +19,6 @@ export const useCreateUserAccount = () => {
     mutationFn: (user: INewUser) => createUserAccount(user),
   });
 };
-
 export const useSigninAccount = () => {
   return useMutation({
     mutationFn: (user: { email: string; password: string }) =>
@@ -42,3 +42,9 @@ export const useCreatePost = () => {
     },
   });
 };
+export const useGetRecentPosts = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+    queryFn: getRecentPosts,
+  });
+}
