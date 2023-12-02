@@ -1,5 +1,6 @@
 import { Models } from 'appwrite';
 import { Link } from 'react-router-dom';
+import { formatDate } from '@/lib/utils';
 
 type PostCardProps = {
   post: Models.Document;
@@ -26,7 +27,7 @@ const PostCard = ({ post }: PostCardProps) => {
             </p>
             <div className="flex-center gap-2 text-light-3">
               <p className="subtle-semibold lg:small-regular">
-                {post.$createdAt}
+                {formatDate(post.$createdAt)}
               </p>{' '}
               -{' '}
               <p className="subtle-semibold lg:small-regular">
@@ -35,6 +36,8 @@ const PostCard = ({ post }: PostCardProps) => {
             </div>
           </div>
         </div>
+
+        
       </div>
     </div>
   );
