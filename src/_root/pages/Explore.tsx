@@ -4,12 +4,14 @@ import {
   useGetPosts,
   useSearchPosts,
 } from '@/lib/react-query/queriesAndMutations';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchResults from '@/components/shared/SearchResults';
 import GridPostList from '@/components/shared/GridPostList';
 import Loader from '@/components/shared/Loader';
+import { useInView } from 'react-intersection-observer';
 
 const Explore = () => {
+  const { ref, inView } = useInView();
   const [searchValue, setSearchValue] = useState('');
 
   const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();
@@ -17,9 +19,13 @@ const Explore = () => {
   const { data: searchedPosts, isFetching: isSearchFetching } =
     useSearchPosts(debouncedValue);
 
+  useEffect(() => {
+    if (inView && !searchValue) fetchNextPage();
+  }, [inView, searchValue]);
+
   if (!posts) {
     return (
-      <div className='flex-center w-full h-full'>
+      <div className="flex-center w-full h-full">
         <Loader />
       </div>
     );
@@ -64,7 +70,10 @@ const Explore = () => {
       </div>
       <div className="flex flex-wrap w-full gap-9 max-w-5xl">
         {shouldShowSearchResults ? (
-          <SearchResults />
+          <SearchResults
+            isSearchFetching={isSearchFetching}
+            searchedPosts={searchedPosts}
+          />
         ) : shouldShowPosts ? (
           <p className="text-light-4 mt-10 text-center w-full">End of posts</p>
         ) : (
@@ -73,6 +82,11 @@ const Explore = () => {
           ))
         )}
       </div>
+      {hasNextPage && !searchValue && (
+        <div ref={ref} className="mt-10">
+          <Loader />
+        </div>
+      )}
     </div>
   );
 };
