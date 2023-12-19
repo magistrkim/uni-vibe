@@ -160,7 +160,7 @@ export async function getRecentPosts() {
   const posts = await databases.listDocuments(
     appwriteConfig.databaseId,
     appwriteConfig.postCollectionId,
-    [Query.orderDesc('$createdAt'), Query.limit(12)]
+    [Query.orderDesc('$createdAt'), Query.limit(20)]
   );
   if (!posts) throw Error;
   return posts;
@@ -282,7 +282,7 @@ export async function deletePost(postId: string, imageId: string) {
   }
 }
 export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
-  const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(6)];
+  const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(3)];
   if (pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
   }
@@ -307,6 +307,28 @@ export async function searchPosts(searchTerm: string) {
     );
     if (!posts) throw Error;
     return posts;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ============================================================
+// USER
+// ============================================================
+
+export async function getUsers(limit?: number) {
+  const queries: any[] = [Query.orderDesc('$createdAt')];
+  if (limit) {
+    queries.push(Query.limit(limit));
+  }
+  try {
+    const users = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      queries
+    );
+    if (!users) throw Error;
+    return users;
   } catch (error) {
     console.log(error);
   }
