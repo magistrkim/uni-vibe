@@ -1,18 +1,13 @@
 import Loader from '@/components/shared/Loader';
-// import { useEffect } from 'react';
 import {
   useGetRecentPosts,
   useGetUsers,
-  // useGetPosts,
 } from '@/lib/react-query/queriesAndMutations';
 import { Models } from 'appwrite';
 import PostCard from '@/components/shared/PostCard';
-// import { useInView } from 'react-intersection-observer';
 import UserCard from '@/components/shared/UserCard';
 
 const Home = () => {
-  // const { ref, inView } = useInView();
-
   const {
     data: creators,
     isLoading: isUserLoading,
@@ -24,12 +19,6 @@ const Home = () => {
     isPending: isPostLoading,
     isError: isErrorPosts,
   } = useGetRecentPosts();
-
-  // const { data: fetchedPost, fetchNextPage, hasNextPage } = useGetPosts();
-
-  // useEffect(() => {
-  //   if (inView) fetchNextPage();
-  // }, [inView]);
 
   if (isErrorPosts || isErrorCreators) {
     return (
@@ -59,11 +48,6 @@ const Home = () => {
             </ul>
           )}
         </div>
-        {/* {hasNextPage && fetchedPost && (
-          <div ref={ref} className="mt-10">
-            <Loader />
-          </div>
-        )} */}
       </div>
       <div className="home-creators">
         <h3 className="h3-bold text-light-1">Top Creators</h3>
