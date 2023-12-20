@@ -26,12 +26,6 @@ const SignupForm = () => {
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
   const navigate = useNavigate();
 
-  const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
-    useCreateUserAccount();
-
-  const { mutateAsync: signinAccount, isPending: isSigningIn } =
-    useSigninAccount();
-
   const form = useForm<z.infer<typeof SignupValidationSchema>>({
     resolver: zodResolver(SignupValidationSchema),
     defaultValues: {
@@ -42,24 +36,29 @@ const SignupForm = () => {
     },
   });
 
+  const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
+    useCreateUserAccount();
+  const { mutateAsync: signinAccount, isPending: isSigningIn } =
+    useSigninAccount();
+
   const onSubmit = async (values: z.infer<typeof SignupValidationSchema>) => {
     const newUser = await createUserAccount(values);
     if (!newUser) {
-      return toast({ title: 'Sign up failed. PLease try again' });
+      return toast({ title: 'Sign up failed. Please try again' });
     }
     const session = await signinAccount({
       email: values.email,
       password: values.password,
     });
     if (!session) {
-      return toast({ title: 'Sign in failed. PLease try again' });
+      return toast({ title: 'Sign in failed. Please try again' });
     }
     const isLoggedIn = await checkAuthUser();
     if (isLoggedIn) {
       form.reset();
       navigate('/');
     } else {
-      return toast({ title: 'Sign up failed. PLease try again' });
+      return toast({ title: 'Sign up failed. Please try again' });
     }
   };
 
@@ -139,7 +138,7 @@ const SignupForm = () => {
             )}
           />
           <Button type="submit" className="shad-button_primary">
-            {isCreatingAccount ? (
+            {isCreatingAccount || isSigningIn || isUserLoading ? (
               <div className="flex-center gap-2">
                 <Loader /> Loading...
               </div>
