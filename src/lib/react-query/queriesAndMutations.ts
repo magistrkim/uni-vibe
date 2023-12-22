@@ -190,3 +190,6 @@ export const useGetUserById = (userId: string) => {
     enabled: !!userId,
   });
 };
+export const useUpdateUser = () => {
+  
+}

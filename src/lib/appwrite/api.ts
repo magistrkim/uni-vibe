@@ -346,3 +346,6 @@ export async function getUserById(userId: string) {
     console.log(error);
   }
 }
+export async function updateUser(user: IUpdateUser) {
+  
+}
