@@ -8,6 +8,9 @@ import {
   createUserAccount,
   signinAccount,
   signOutAccount,
+  getUsers,
+  getUserById,
+  updateUser,
   createPost,
   getRecentPosts,
   likePost,
@@ -19,9 +22,7 @@ import {
   deletePost,
   getInfinitePosts,
   searchPosts,
-  getUsers,
-  getUserById,
-  updateUser,
+  getUserPosts,
 } from '../appwrite/api';
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types';
 import { QUERY_KEYS } from '@/lib/react-query/queryKeys';
@@ -171,6 +172,13 @@ export const useGetPosts = () => {
     },
   });
 };
+export const useGetUserPosts = (userId?: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_USER_POSTS, userId],
+    queryFn: () => getUserPosts(userId),
+    enabled: !!userId,
+  });
+};
 export const useSearchPosts = (searchTerm: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.SEARCH_POSTS, searchTerm],
@@ -195,7 +203,7 @@ export const useUpdateUser = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (user: IUpdateUser) => updateUser(user),
-    onSuccess: (data) => {
+    onSuccess: data => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_CURRENT_USER],
       });
