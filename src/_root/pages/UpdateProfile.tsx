@@ -23,10 +23,6 @@ import {
   useUpdateUser,
 } from '@/lib/react-query/queriesAndMutations';
 import UserCard from '@/components/shared/UserCard';
-import {
-  Route,
-  Routes
-} from 'react-router-dom';
 import GridPostList from '@/components/shared/GridPostList';
 
 const UpdateProfile = () => {
@@ -197,23 +193,9 @@ const UpdateProfile = () => {
       <div className="home-creators">
         <UserCard user={currentUser} />
         <h3 className="body-bold text-light-1">Top posts by you</h3>
-        <Routes>
-        <Route
-          index
-          element={<GridPostList posts={currentUser.posts} showUser={false} />}
-        />
-      </Routes>
-        {/* {isUserLoading && !creators ? (
-          <Loader />
-        ) : (
-          <ul className="grid 2xl:grid-cols-2 gap-6">
-            {creators?.documents.map(creator => (
-              <li key={creator?.$id}>
-                <UserCard user={creator} />
-              </li>
-            ))}
-          </ul>
-        )} */}
+        <div className="flex flex-col">
+          <GridPostList posts={currentUser.posts} showUser={false} customContainerClass="update-col"/>
+        </div>
       </div>
     </section>
   );

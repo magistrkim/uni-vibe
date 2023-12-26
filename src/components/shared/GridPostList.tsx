@@ -7,16 +7,18 @@ type GridPostListProps = {
   posts: Models.Document[];
   showUser?: boolean;
   showStats?: boolean;
+  customContainerClass?: string;
 };
 
 const GridPostList = ({
   posts,
   showUser = true,
   showStats = true,
+  customContainerClass = 'grid-container',
 }: GridPostListProps) => {
   const { user } = useUserContext();
   return (
-    <ul className="grid-container">
+    <ul className={customContainerClass}>
       {posts.map(post => (
         <li key={post.$id} className="relative min-w-80 h-80">
           <Link to={`/posts/${post.$id}`} className="grid-post_link">
