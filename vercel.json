@@ -1,0 +1,16 @@
+{
+  "build": {
+    "typescript": {
+      "ignoreBuildErrors": true
+    }
+  },
+  "github": {
+    "silent": true
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
