@@ -1,10 +1,15 @@
 import PostForm from '@/components/forms/PostForm';
 import UserCard from '@/components/shared/UserCard';
 import { useUserContext } from '@/context/AuthContext';
-// import GridPostList from '@/components/shared/GridPostList';
+import GridPostList from '@/components/shared/GridPostList';
+import Loader from '@/components/shared/Loader';
+import { useGetUserPosts } from '@/lib/react-query/queriesAndMutations';
 
 const CreatePost = () => {
   const { user } = useUserContext();
+  const { data: userPosts, isLoading: isLoadingUserPosts } = useGetUserPosts(
+    user.id
+  );
 
   return (
     <div className="flex flex-1">
@@ -23,9 +28,19 @@ const CreatePost = () => {
       <div className="home-creators">
         <UserCard user={user} />
         <h3 className="body-bold text-light-1">Top posts by you</h3>
-        {/* <div className="flex flex-col">
-          <GridPostList posts={currentUser.posts} showUser={false} customContainerClass="update-col"/>
-        </div> */}
+        <div className="flex flex-col">
+          {isLoadingUserPosts && !userPosts ? (
+            <div className="flex-center w-full h-full">
+              <Loader />
+            </div>
+          ) : (
+            <GridPostList
+              posts={userPosts?.documents}
+              showUser={false}
+              customContainerClass="update-col"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
