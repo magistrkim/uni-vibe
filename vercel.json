@@ -1,9 +1,4 @@
 {
-  "build": {
-    "typescript": {
-      "ignoreBuildErrors": true
-    }
-  },
   "github": {
     "silent": true
   },
