@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-    <a href="https://www.linkedin.com/in/nataliya-kachor-522170271/" target="_blank">
+    <a href="https://www.linkedin.com/in/nataliya-kachor-522170271/" target="_blank" borderRadius="100px">
       <img src="https://github.com/magistrkim/uni-vibe/assets/115700340/ea7f6cd0-cc73-4f29-a232-b70a97e9ee0a" alt="Project Banner">
     </a>
   <br />
@@ -11,34 +11,59 @@
     <img src="https://img.shields.io/badge/-React_Query-black?style=for-the-badge&logoColor=white&logo=reactquery&color=FF4154" alt="reactquery" />
     <img src="https://img.shields.io/badge/-Typescript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="typescript" />
   </div>
-
+ <h2 align="center"> UniVibe Social Media Application</h2>
+  
 # Introduction
+<p>Explore social media app with this user-friendly platform that has awesome look and lots of features. 
+  Easily create and explore posts, and enjoy a strong authentication system and quick data fetching using React Query for a smooth user experience.</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
-Currently, two official plugins are available:
+- React.js
+- Appwrite
+- React Query
+- TypeScript
+- Shadcn
+- Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ## <a name="features"> Features</a>
+ 
+**Authentication System**: A robust authentication system ensuring security and user privacy
 
-## Expanding the ESLint configuration
+![Снимок экрана (185)](https://github.com/magistrkim/uni-vibe/assets/115700340/7b942e15-1c0a-45ef-9777-3c30ec23646d)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+**Explore Page**: Homepage for users to explore posts, with a featured section for top creators
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+![Снимок экрана (181)](https://github.com/magistrkim/uni-vibe/assets/115700340/d79c5e10-1229-45a9-809d-390f8f85a000)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+**Like and Save Functionality**: Enable users to like and save posts, with dedicated pages for managing liked and saved content
+
+
+![Снимок экрана (182)](https://github.com/magistrkim/uni-vibe/assets/115700340/eeaea473-53dc-46c9-9064-9cfd4bfc0c02)
+
+
+**Detailed Post Page**: A detailed post page displaying content and related posts for an immersive user experience
+
+
+
+**Profile Page**: A user profile page showcasing liked posts and providing options to edit the profile
+
+![Снимок экрана (183)](https://github.com/magistrkim/uni-vibe/assets/115700340/aa761817-21b1-4a93-857e-bd45c5275832)
+
+
+**Browse Other Users**: Allow users to browse and explore other users' profiles and posts
+
+**Update User Info**: Implement a friendly update user info page with effortless file management, storage, and drag-drop feature
+
+![Снимок экрана (184)](https://github.com/magistrkim/uni-vibe/assets/115700340/5c3b62e6-465d-4156-96d6-4143db790709)
+
+
+**Edit Post Functionality**: Provide users with the ability to edit the content of their posts at any time
+
+**Responsive UI with Bottom Bar**: A responsive UI with a bottom bar, enhancing the mobile app feel for seamless navigation
+
+**React Query Integration**: Incorporate the React Query (Tanstack Query) data fetching library for, Auto caching to enhance performance, Parallel queries for efficient data retrieval, First-class Mutations, etc
+
+**Backend as a Service (BaaS) - Appwrite**: Utilize Appwrite as a Backend as a Service solution for streamlined backend development, offering features like authentication, database, file storage, and more and many more, including code architecture and reusability 
