@@ -20,7 +20,7 @@
 <p>Explore social media app with this user-friendly platform that has awesome look and lots of features. 
   Easily create and explore posts, and enjoy a strong authentication system and quick data fetching using React Query for a smooth user experience.</p>
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+## <a name="tech-stack">Tech Stack</a>
  <br />
 - React.js
 - Appwrite
@@ -30,19 +30,18 @@
 - Tailwind CSS
 
  ## <a name="features"> Features</a>
-  <br />
+ 
 **Authentication System**: A robust authentication system ensuring security and user privacy
- <br />
+ 
 ![Снимок экрана (185)](https://github.com/magistrkim/uni-vibe/assets/115700340/7b942e15-1c0a-45ef-9777-3c30ec23646d)
 
 
 **Explore Page**: Homepage for users to explore posts, with a featured section for top creators
- <br />
+ 
 ![Снимок экрана (181)](https://github.com/magistrkim/uni-vibe/assets/115700340/d79c5e10-1229-45a9-809d-390f8f85a000)
 
 
 **Like and Save Functionality**: Enable users to like and save posts, with dedicated pages for managing liked and saved content
- <br />
 
 ![Снимок экрана (182)](https://github.com/magistrkim/uni-vibe/assets/115700340/eeaea473-53dc-46c9-9064-9cfd4bfc0c02)
 
@@ -52,7 +51,7 @@
 
 
 **Profile Page**: A user profile page showcasing liked posts and providing options to edit the profile
- <br />
+
 ![Снимок экрана (183)](https://github.com/magistrkim/uni-vibe/assets/115700340/aa761817-21b1-4a93-857e-bd45c5275832)
 
 
