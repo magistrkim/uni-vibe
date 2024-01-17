@@ -1,6 +1,6 @@
 <div align="center">
   
-  ## <a name="tech-stack">UniVibe Social Media Application</a>
+  ## <a href="https://uni-vibe.vercel.app/sign-in" target="_blank">UniVibe Social Media Application</a>
   <br />
     <a href="https://www.linkedin.com/in/nataliya-kachor-522170271/" target="_blank">
       <img src="https://github.com/magistrkim/uni-vibe/assets/115700340/25fe893c-4ccc-41b0-9f69-1dc276e723cc" alt="Project Banner">
