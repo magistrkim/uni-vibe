@@ -22,6 +22,7 @@
 
 ## <a name="tech-stack">Tech Stack</a>
  <br />
+ 
 - React.js
 - Appwrite
 - React Query
